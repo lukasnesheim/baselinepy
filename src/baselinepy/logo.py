@@ -1,11 +1,16 @@
 # function imports
-from baselinepy.theme import load_color, load_style
 from PIL import Image, ImageDraw
 
-def add_logo(image_path: str, logo_height: int = 80, logo_width_ratio: float = 0.20):
+# baseline imports
+from baselinepy.theme import load_color, load_style
+
+def add_logo(image_path: str, logo_height: int = 80, logo_width_ratio: float = 0.25):
     try:
         color = load_color()
-        style = load_style()["logo"]
+        assert color is not None
+
+        style = load_style()
+        assert style is not None
 
         # load the image
         old_image = Image.open(image_path)
@@ -21,7 +26,7 @@ def add_logo(image_path: str, logo_height: int = 80, logo_width_ratio: float = 0
         new_image = Image.new("RGB", (old_image_width, old_image_height + logo_height), color["background"])
 
         # add the logo to the new image
-        ImageDraw.Draw(new_image).rectangle([0, 0, logo_width, logo_height], fill=style["color"])
+        ImageDraw.Draw(new_image).rectangle([0, 0, logo_width, logo_height], fill=style["logo"]["color"])
 
         # add the old image to the new image
         new_image.paste(old_image, (0, logo_height))

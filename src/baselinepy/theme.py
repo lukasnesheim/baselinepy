@@ -8,22 +8,18 @@ from importlib.resources import files
 _color: dict | None = None
 _style: dict | None = None
 
-def load_color() -> dict:
+def load_color() -> dict | None:
     global _color
     
     if _color is None:
         _color = json.loads((files("baselinepy.resources") / "color.json").read_text())
-    
-    assert _color is not None, "Failed to load the color.json file."
 
     return _color
 
-def load_style() -> dict:
+def load_style() -> dict | None:
     global _style
-    
+
     if _style is None:
         _style = json.loads((files("baselinepy.resources") / "style.json").read_text())
-    
-    assert _style is not None, "Failed to load the style.json file."
 
     return _style

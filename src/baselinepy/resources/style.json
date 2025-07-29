@@ -4,20 +4,12 @@
     },
     "table": {
         "font": {
-            "family": "Montserrat",
-            "size": {
-                "title": 16,
-                "subtitle": 12,
-                "label": 10,
-                "body": 8,
-                "credit": 6
-            },
-            "weight": {
-                "title": 600,
-                "subtitle": 600,
-                "label": 600,
-                "body": 400,
-                "credit": 400
+            "alpha": {
+                "title": 1.0,
+                "subtitle": 1.0,
+                "label": 1.0,
+                "body": 1.0,
+                "credit": 1.0 
             },
             "color": {
                 "title": "#333333",
@@ -26,12 +18,20 @@
                 "body": "#333333",
                 "credit": "#595959"
             },
-            "alpha": {
-                "title": 1.0,
-                "subtitle": 1.0,
-                "label": 1.0,
-                "body": 1.0,
-                "credit": 1.0 
+            "family": "Montserrat",
+            "size": {
+                "title": 16,
+                "subtitle": 10,
+                "label": 10,
+                "body": 8,
+                "credit": 6
+            },
+            "weight": {
+                "title": 600,
+                "subtitle": 400,
+                "label": 600,
+                "body": 400,
+                "credit": 400
             }
         }
     },
@@ -48,7 +48,7 @@
             },
             "color": {
                 "title": "#333333",
-                "subtitle": "#B3B3B3",
+                "subtitle": "#595959",
                 "label": "#333333",
                 "tick": "#333333",
                 "body": "#333333",
@@ -67,11 +67,11 @@
             },
             "weight": {
                 "title": "semibold",
-                "subtitle": "semibold",
+                "subtitle": "regular",
                 "label": "semibold",
                 "tick": "semibold",
                 "body": "regular",
-                "legend": "regular",
+                "legend": "semibold",
                 "credit": "regular"
             }
         },
@@ -82,8 +82,6 @@
             "alpha": 0.2
         },
         "legend": {
-            "location": "best",
-            "frame": false,
             "facecolor": "#F9F6EF",
             "edgecolor": "#333333"
         }

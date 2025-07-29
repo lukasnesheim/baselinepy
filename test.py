@@ -7,7 +7,7 @@ from sklearn.linear_model import LinearRegression
 
 # baseline imports
 from baselinepy.logo import add_logo
-from baselinepy.mpl import baseline_plot, theme_baseline, add_caption, add_titles
+from baselinepy.mpl import baseline_plot, theme_baseline, add_caption, add_legend, add_title
 from baselinepy.theme import load_color
 
 # baseline global defaults
@@ -15,6 +15,7 @@ theme_baseline()
 
 # baseline colors
 color = load_color()
+assert color is not None
 
 # convert penguins dataframe to polars
 df = sns.load_dataset("penguins").dropna()
@@ -46,7 +47,7 @@ sns.regplot(
 )
 
 # add titles
-add_titles(ax1, "Predicting Mass", "Linear Regression of Body Mass on Flipper Length")
+add_title(ax1, "Predicting Mass", "Linear Regression of Body Mass on Flipper Length")
 
 # add captions
 add_caption(fig1, ["Charting: Lukas Nesheim", "Data: Seaborn"])
@@ -80,7 +81,7 @@ for violin in ax2.lines:
     violin.set_color(color["london"][2])
 
 # add titles
-add_titles(ax2, "Weight Differences", "Body Mass by Species")
+add_title(ax2, "Weight Differences", "Body Mass by Species")
 
 # add captions
 add_caption(fig2, ["Charting: Lukas Nesheim", "Data: Seaborn"])
@@ -95,3 +96,32 @@ fig2.savefig("test_violin.png", bbox_inches="tight", pad_inches=0.1, dpi=600)
 
 # add the baseline logo
 add_logo("test_violin.png")
+
+# legend plot
+fig3, ax3 = baseline_plot()
+
+sns.scatterplot(
+    data=df,
+    x="bill_length_mm",
+    y="bill_depth_mm",
+    hue="species"
+)
+
+# add legend
+add_legend(ax3, title="Test Title", frameon=True)
+
+# add titles
+add_title(ax3, "A Billi, A Billi", "Bill Depth by Bill Length")
+
+# add captions
+add_caption(fig3, ["Charting: Lukas Nesheim", "Data: Seaborn"])
+
+# set axis labels
+ax3.set_xlabel("Bill Length (mm)")
+ax3.set_ylabel("Bill Depth (mm)")
+
+plt.tight_layout()
+
+fig3.savefig("test_legend.png", bbox_inches="tight", pad_inches=0.1)
+
+add_logo("test_legend.png")
